@@ -49,7 +49,7 @@ function Header() {
     return (
         <div className='fixed top-0 w-full h-[70px] p-3 shadow-sm flex justify-between items-center px-5 bg-[#2827FC] z-50'>
             <a href="/">
-                <img src='/GMI-Logo.webp' alt="Logo" className='w-[150px] h-[60px]' />
+                <img src='/Logo-Circle.png' alt="Logo" className='w-[60px] h-[60px]' />
             </a>
             <div>
                 {user ? (
