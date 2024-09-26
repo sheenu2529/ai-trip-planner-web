@@ -188,7 +188,7 @@ function CreateTrip() {
                             <p>Sign in to save your trip plans and access them on any device.</p>
                             <Button
                                 onClick={login}
-                                className='w-full mt-5 flex gap-4 items-center'>
+                                className='w-full mt-5 flex gap-4 items-center outline-none border-none focus:outline-none'>
                                 <FcGoogle className='h-7 w-7' />
                                 Sign In with Google
                             </Button>
