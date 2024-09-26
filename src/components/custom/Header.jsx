@@ -40,7 +40,6 @@ function Header() {
             console.log(resp);
             localStorage.setItem('user', JSON.stringify(resp.data));
             setOpenDialog(false);
-            // window.location.reload();
         });
     };
 
@@ -53,15 +52,25 @@ function Header() {
             </a>
             <div>
                 {user ? (
-                    <div className='flex items-center gap-3'>
+                    <div className='flex items-center gap-2'>
                         <a className='text-black' href="/create-trip">
-                            <Button variant="outline" className="rounded-full focus:outline-none border-2 border-[#3130FC] hover:border-[#2827FC] hover:bg-white">+ Create Trip</Button>
+                            <Button 
+                                variant="outline"
+                                className="rounded-full focus:outline-none border-2 border-[#3130FC] hover:border-[#2827FC] hover:bg-white 
+                                    sm:w-[100px] sm:h-[35px] md:w-[130px] md:h-[40px]">
+                                + Create Trip
+                            </Button>
                         </a>
                         <a className='text-black' href="/my-trips">
-                            <Button variant="outline" className="rounded-full focus:outline-none border-2 border-[#3130FC] hover:border-[#2827FC] hover:bg-white">My Trips</Button>
+                            <Button 
+                                variant="outline"
+                                className="rounded-full focus:outline-none border-2 border-[#3130FC] hover:border-[#2827FC] hover:bg-white 
+                                    sm:w-[100px] sm:h-[35px] md:w-[130px] md:h-[40px]">
+                                My Trips
+                            </Button>
                         </a>
                         <Popover>
-                            <PopoverTrigger className='border-none bg-white focus:outline-none'>
+                            <PopoverTrigger className='border-none bg-white focus:outline-none rounded-lg'>
                                 <img
                                     src={userPicture}
                                     className='h-[40px] w-[40px] rounded-full'
