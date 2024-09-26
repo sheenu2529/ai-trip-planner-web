@@ -17,7 +17,6 @@ import { FcGoogle } from "react-icons/fc";
 import axios from 'axios';
 
 function Header() {
-
     const user = JSON.parse(localStorage.getItem('user'));
     const [openDialog, setOpenDialog] = useState(false);
 
@@ -46,7 +45,7 @@ function Header() {
     const userPicture = user?.picture || 'user.png';
 
     return (
-        <div className='fixed top-0 w-full p-3 shadow-sm flex justify-between items-center px-5 bg-white z-50'>
+        <div className='fixed top-0 w-full p-3 shadow-sm flex justify-between items-center px-5 bg-white z-50' style={{ height: '60px' }}>
             <a href="/">
                 <img src='/Logo.png' alt="Logo" className='w-[40px] h-[30px]' />
             </a>
@@ -89,7 +88,7 @@ function Header() {
                 <DialogContent>
                     <DialogHeader>
                         <DialogDescription>
-                            <img src="/Logo-Circle.png" alt="App Logo" className='w-[40px] h-[40px]'/>
+                            <img src="/Logo-Circle.png" alt="App Logo" className='w-[40px] h-[40px]' />
                             <h2 className='font-bold text-lg mt-7'>Sign In with Google</h2>
                             <p>Sign in to save your trip plans and access them on any device.</p>
                             <Button
