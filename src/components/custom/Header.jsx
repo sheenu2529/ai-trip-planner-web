@@ -46,7 +46,7 @@ function Header() {
     const userPicture = user?.picture || 'user.png';
 
     return (
-        <div className='fixed top-0 w-full h-[60px] p-3 shadow-sm flex justify-between items-center px-5 bg-white z-50'>
+        <div className='fixed top-0 w-full p-3 shadow-sm flex justify-between items-center px-5 bg-white z-50'>
             <a href="/">
                 <img src='/Logo.png' alt="Logo" className='w-[40px] h-[30px]' />
             </a>
