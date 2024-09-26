@@ -56,8 +56,8 @@ function CreateTrip() {
             setOpenDialog(true);
             return ;
         }
-        if (formData?.noOfDays > 5) {
-            toast("Please enter less than 5 days of plan");
+        if (formData?.noOfDays <= 10) {
+            toast("Please enter less than 10 days of plan");
             return;
         }
     
