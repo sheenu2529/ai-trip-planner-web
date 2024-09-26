@@ -47,9 +47,9 @@ function Header() {
     const userPicture = user?.picture || 'user.png';
 
     return (
-        <div className='fixed top-0 w-full h-[70px] p-3 shadow-sm flex justify-between items-center px-5 bg-[#2827FC] z-50'>
+        <div className='fixed top-0 w-full h-[60px] p-3 shadow-sm flex justify-between items-center px-5 bg-white z-50'>
             <a href="/">
-                <img src='/Logo-Circle.png' alt="Logo" className='w-[60px] h-[60px]' />
+                <img src='/Logo.png' alt="Logo" className='w-[60px] h-[40px]' />
             </a>
             <div>
                 {user ? (
@@ -61,7 +61,7 @@ function Header() {
                             <Button variant="outline" className="rounded-full focus:outline-none border-2 border-[#3130FC] hover:border-[#2827FC] hover:bg-white">My Trips</Button>
                         </a>
                         <Popover>
-                            <PopoverTrigger className='border-none bg-[#2827FC] focus:outline-none'>
+                            <PopoverTrigger className='border-none bg-white focus:outline-none'>
                                 <img
                                     src={userPicture}
                                     className='h-[40px] w-[40px] rounded-full'
@@ -79,7 +79,7 @@ function Header() {
                         </Popover>
                     </div>
                 ) : (
-                    <Button onClick={() => setOpenDialog(true)} className="bg-white text-black hover:bg-white focus:outline-none">Sign In</Button>
+                    <Button onClick={() => setOpenDialog(true)} className="border-none focus:outline-none">Sign In</Button>
                 )}
             </div>
             <Dialog open={openDialog} onOpenChange={setOpenDialog}>
