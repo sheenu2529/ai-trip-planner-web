@@ -45,16 +45,21 @@ function MyTrips() {
   };
 
   return (
-    <div className='min-h-screen max-w-5xl mx-auto px-5 mt-24 sm:px-10 md:px-32 lg:px-56 xl:px-10'>
-      <h2 className='font-bold text-3xl'>My Trips</h2>
-      <div className='grid grid-cols-2 mt-10 gap-5 md:grid-cols-3'>
+    <div className="min-h-screen max-w-7xl mx-auto px-5 sm:px-10 lg:px-20 py-10">
+      {/* Header */}
+      <h2 className="font-bold mt-10 text-2xl sm:text-xl lg:text-2xl mb-8">
+        My Trips
+      </h2>
+
+      {/* Trips List */}
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {userTrips.length > 0 ? (
           userTrips.map((trip) => (
             <UserTripCardItem key={trip.id} trip={trip} onDelete={() => handleDelete(trip.id)} />
           ))
         ) : (
           [1, 2, 3, 4, 5, 6].map((_, index) => (
-            <div key={index} className='h-[220px] w-full bg-slate-200 animate-pulse rounded-xl'></div>
+            <div key={index} className="h-[220px] w-full bg-slate-200 animate-pulse rounded-lg"></div>
           ))
         )}
       </div>

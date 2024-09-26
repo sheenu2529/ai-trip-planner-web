@@ -16,7 +16,7 @@ function Hero() {
       <Link to='/create-trip'>
         <Button className='px-6 py-3 text-sm sm:text-base'>Get Started, It's Free</Button>
       </Link>
-      <img src='/landing-page.png' alt='Landing page graphic' className='w-full h-auto' />
+      <img src='/landing-page.png' alt='Landing page graphic' />
     </div>
   )
 }
