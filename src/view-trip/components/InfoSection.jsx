@@ -24,7 +24,7 @@ function InfoSection({ trip }) {
     }
 
     const shareTrip = () => {
-        const tripLink = `http://localhost:5173/view-trip/${trip.id}`;
+        const tripLink = `https://ai-trip-planner-web-rho.vercel.app/view-trip/${trip.id}`;
         const whatsappUrl = `https://api.whatsapp.com/send?text=${tripLink}`;
         window.open(whatsappUrl, '_blank');
     }
