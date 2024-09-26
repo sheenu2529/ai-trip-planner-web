@@ -183,7 +183,7 @@ function CreateTrip() {
                 <DialogContent>
                     <DialogHeader>
                         <DialogDescription>
-                            <img src="/trip-logo.png" alt="App Logo" className='w-[40px] h-[40px]'/>
+                            <img src="/Logo-Circle.png" alt="App Logo" className='w-[40px] h-[40px]'/>
                             <h2 className='font-bold text-lg mt-7'>Sign In with Google</h2>
                             <p>Sign in to save your trip plans and access them on any device.</p>
                             <Button

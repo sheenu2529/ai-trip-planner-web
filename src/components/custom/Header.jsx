@@ -47,21 +47,21 @@ function Header() {
     const userPicture = user?.picture || 'user.png';
 
     return (
-        <div className='fixed top-0 w-full p-3 shadow-sm flex justify-between items-center px-5 bg-white z-50'>
+        <div className='fixed top-0 w-full h-[70px] p-3 shadow-sm flex justify-between items-center px-5 bg-[#2827FC] z-50'>
             <a href="/">
-                <img src='/trip-logo.png' alt="Logo" className='w-[40px] h-[40px]' />
+                <img src='/GMI-Logo.webp' alt="Logo" className='w-[150px] h-[60px]' />
             </a>
             <div>
                 {user ? (
                     <div className='flex items-center gap-3'>
                         <a className='text-black' href="/create-trip">
-                            <Button variant="outline" className="rounded-full focus:outline-none border-2 border-[#ffb2a7] hover:border-[#f56551] hover:bg-transparent">+ Create Trip</Button>
+                            <Button variant="outline" className="rounded-full focus:outline-none border-2 border-[#3130FC] hover:border-[#2827FC] hover:bg-white">+ Create Trip</Button>
                         </a>
                         <a className='text-black' href="/my-trips">
-                            <Button variant="outline" className="rounded-full focus:outline-none border-2 border-[#ffb2a7] hover:border-[#f56551] hover:bg-transparent">My Trips</Button>
+                            <Button variant="outline" className="rounded-full focus:outline-none border-2 border-[#3130FC] hover:border-[#2827FC] hover:bg-white">My Trips</Button>
                         </a>
                         <Popover>
-                            <PopoverTrigger className='border-none bg-white focus:outline-none'>
+                            <PopoverTrigger className='border-none bg-[#2827FC] focus:outline-none'>
                                 <img
                                     src={userPicture}
                                     className='h-[40px] w-[40px] rounded-full'
@@ -79,14 +79,14 @@ function Header() {
                         </Popover>
                     </div>
                 ) : (
-                    <Button onClick={() => setOpenDialog(true)}>Sign In</Button>
+                    <Button onClick={() => setOpenDialog(true)} className="bg-white text-black hover:bg-white focus:outline-none">Sign In</Button>
                 )}
             </div>
             <Dialog open={openDialog} onOpenChange={setOpenDialog}>
                 <DialogContent>
                     <DialogHeader>
                         <DialogDescription>
-                            <img src="/trip-logo.png" alt="App Logo" className='w-[40px] h-[40px]'/>
+                            <img src="/Logo-Circle.png" alt="App Logo" className='w-[40px] h-[40px]'/>
                             <h2 className='font-bold text-lg mt-7'>Sign In with Google</h2>
                             <p>Sign in to save your trip plans and access them on any device.</p>
                             <Button
