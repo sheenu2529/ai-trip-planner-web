@@ -48,26 +48,20 @@ function Header() {
     return (
         <div className='fixed top-0 w-full h-[60px] p-3 shadow-sm flex justify-between items-center px-5 bg-white z-50'>
             <a href="/">
-                <img src='/Logo.png' alt="Logo" className='w-[60px] h-[40px]' />
+                <img src='/Logo.png' alt="Logo" className='w-[40px] h-[30px]' />
             </a>
-            <div>
+            <div className="flex items-center gap-5">
                 {user ? (
-                    <div className='flex items-center gap-2'>
-                        <a className='text-black' href="/create-trip">
-                            <Button 
-                                variant="outline"
-                                className="rounded-full focus:outline-none border-2 border-[#3130FC] hover:border-[#2827FC] hover:bg-white 
-                                    sm:w-[100px] sm:h-[35px] md:w-[130px] md:h-[40px]">
-                                + Create Trip
-                            </Button>
+                    <div className='flex items-center gap-3'>
+                        <a
+                            className='text-[#3130FC] border-2 border-transparent hover:border-[#3130FC] hover:text-[#3130FC] px-2 py-1 rounded-lg text-md'
+                            href="/create-trip">
+                            Create Trip
                         </a>
-                        <a className='text-black' href="/my-trips">
-                            <Button 
-                                variant="outline"
-                                className="rounded-full focus:outline-none border-2 border-[#3130FC] hover:border-[#2827FC] hover:bg-white 
-                                    sm:w-[100px] sm:h-[35px] md:w-[130px] md:h-[40px]">
-                                My Trips
-                            </Button>
+                        <a
+                            className='text-[#3130FC] border-2 border-transparent hover:border-[#3130FC] hover:text-[#3130FC] px-2 py-1 rounded-lg text-md'
+                            href="/my-trips">
+                            My Trips
                         </a>
                         <Popover>
                             <PopoverTrigger className='border-none bg-white focus:outline-none rounded-lg'>
