@@ -10,6 +10,7 @@ import {
     DialogContent,
     DialogDescription,
     DialogHeader,
+    DialogTitle,
 } from "@/components/ui/dialog";
 import { FcGoogle } from "react-icons/fc";
 import { useGoogleLogin } from '@react-oauth/google';
@@ -177,18 +178,18 @@ function CreateTrip() {
             <Dialog open={openDialog} onOpenChange={setOpenDialog}>
                 <DialogContent>
                     <DialogHeader>
+                        <img src="/Logo.png" alt="App Logo" className='w-[40px] h-[35px]' />
+                        <DialogTitle className='font-bold text-lg mt-7'>Sign In with Google</DialogTitle>
                         <DialogDescription>
-                            <img src="/Logo-Circle.png" alt="App Logo" className='w-[40px] h-[40px]' />
-                            <h2 className='font-bold text-lg mt-7'>Sign In with Google</h2>
-                            <p>Sign in to save your trip plans and access them on any device.</p>
-                            <Button
-                                onClick={login}
-                                className='w-full mt-5 flex gap-4 items-center outline-none border-none focus:outline-none'>
-                                <FcGoogle className='h-7 w-7' />
-                                Sign In with Google
-                            </Button>
+                            Sign in to save your trip plans and access them on any device.
                         </DialogDescription>
                     </DialogHeader>
+                    <Button
+                        onClick={login}
+                        className='w-full mt-5 flex gap-4 items-center outline-none border-none focus:outline-none'>
+                        <FcGoogle className='h-7 w-7' />
+                        Sign In with Google
+                    </Button>
                 </DialogContent>
             </Dialog>
         </div>

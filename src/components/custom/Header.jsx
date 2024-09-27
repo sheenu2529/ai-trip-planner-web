@@ -10,6 +10,7 @@ import {
     DialogContent,
     DialogDescription,
     DialogHeader,
+    DialogTitle,
 } from "@/components/ui/dialog";
 import { googleLogout } from '@react-oauth/google';
 import { useGoogleLogin } from '@react-oauth/google';
@@ -52,16 +53,16 @@ function Header() {
             <div className="flex items-center gap-5">
                 {user ? (
                     <div className='flex items-center gap-3'>
-                        <a
-                            className='text-[#3130FC] border-2 border-transparent hover:border-[#3130FC] hover:text-[#3130FC] px-2 py-1 rounded-lg text-md'
-                            href="/create-trip">
-                            Create Trip
-                        </a>
-                        <a
-                            className='text-[#3130FC] border-2 border-transparent hover:border-[#3130FC] hover:text-[#3130FC] px-2 py-1 rounded-lg text-md'
-                            href="/my-trips">
-                            My Trips
-                        </a>
+                    <a
+                        className='text-[#3130FC] border-2 border-transparent lg:hover:border-[#3130FC] lg:hover:text-[#3130FC] px-2 py-1 rounded-lg text-md'
+                        href="/create-trip">
+                        Create Trip
+                    </a>
+                    <a
+                        className='text-[#3130FC] border-2 border-transparent lg:hover:border-[#3130FC] lg:hover:text-[#3130FC] px-2 py-1 rounded-lg text-md'
+                        href="/my-trips">
+                        My Trips
+                    </a>
                         <Popover>
                             <PopoverTrigger className='border-none bg-white focus:outline-none rounded-lg'>
                                 <img
@@ -87,18 +88,18 @@ function Header() {
             <Dialog open={openDialog} onOpenChange={setOpenDialog}>
                 <DialogContent>
                     <DialogHeader>
+                        <img src="/Logo.png" alt="App Logo" className='w-[40px] h-[35px]' />
+                        <DialogTitle className='font-bold text-lg mt-7'>Sign In with Google</DialogTitle>
                         <DialogDescription>
-                            <img src="/Logo-Circle.png" alt="App Logo" className='w-[40px] h-[40px]' />
-                            <h2 className='font-bold text-lg mt-7'>Sign In with Google</h2>
-                            <p>Sign in to save your trip plans and access them on any device.</p>
-                            <Button
-                                onClick={login}
-                                className='w-full mt-5 flex gap-4 items-center outline-none border-none focus:outline-none'>
-                                <FcGoogle className='h-7 w-7' />
-                                Sign In with Google
-                            </Button>
+                            Sign in to save your trip plans and access them on any device.
                         </DialogDescription>
                     </DialogHeader>
+                    <Button
+                        onClick={login}
+                        className='w-full mt-5 flex gap-4 items-center outline-none border-none focus:outline-none'>
+                        <FcGoogle className='h-7 w-7' />
+                        Sign In with Google
+                    </Button>
                 </DialogContent>
             </Dialog>
         </div>
