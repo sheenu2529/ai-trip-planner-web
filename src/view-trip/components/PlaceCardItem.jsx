@@ -21,7 +21,9 @@ function PlaceCardItem({place}) {
         })
     }
   return (
-    <a href={'https://www.google.com/maps/search/?api=1&query='+place?.placeName} target='_blank'>
+    <a href={'https://www.google.com/maps/search/?api=1&query='+place?.placeName+","+place?.geoCoordinates} 
+    target='_blank' 
+    className='focus:outline-none focus:ring-0 active:bg-transparent'>
     <div className='border rounded-xl p-3 mt-2 flex gap-5 hover:scale-105 transition-all hover:shadow-md cursor-pointer'>
         <img src={photoUrl?photoUrl:'/placeholder.jpg'}
         className='w-[130px] h-[130px] rounded-xl object-cover'
