@@ -44,10 +44,8 @@ function CreateTrip() {
     });
 
     const OnGenerateTrip = async () => {
-        const user = JSON.parse(localStorage.getItem('user'));
-
-        if (!user) {
-            setOpenDialog(true);
+        if (!formData?.location || !formData?.budget || !formData?.traveler || !formData?.noOfDays) {
+            toast("Please fill all details");
             return;
         }
         if (formData?.noOfDays > 10) {
@@ -55,10 +53,12 @@ function CreateTrip() {
             return;
         }
 
-        if (!formData?.location || !formData?.budget || !formData?.traveler) {
-            toast("Please fill all details");
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) {
+            setOpenDialog(true);
             return;
         }
+
         setLoading(true);
         const FINAL_PROMPT = AI_PROMPT
             .replace('{location}', formData?.location?.label)
@@ -101,6 +101,7 @@ function CreateTrip() {
             OnGenerateTrip();
         });
     };
+
     return (
         <div className="min-h-screen flex flex-col">
             <div className='flex-grow max-w-5xl w-full mx-auto px-5 py-10 sm:px-10 md:px-32 lg:px-56 xl:px-10'>
@@ -136,8 +137,8 @@ function CreateTrip() {
                                 <div key={index}
                                     onClick={() => handleInputChange('budget', item.title)}
                                     className={`p-4 border cursor-pointer rounded-lg hover:shadow-lg
-                                    ${formData?.budget == item.title && 'shadow-lg border-black'}
-                                    `}>
+                                    ${formData?.budget == item.title && 'shadow-lg border-black'}`}
+                                >
                                     <h2 className='text-4xl'>{item.icon}</h2>
                                     <h2 className='font-bold text-lg'>{item.title}</h2>
                                     <h2 className='text-sm text-gray-500'>{item.desc}</h2>
@@ -153,8 +154,8 @@ function CreateTrip() {
                                 <div key={index}
                                     onClick={() => handleInputChange('traveler', item.people)}
                                     className={`p-4 border cursor-pointer rounded-lg hover:shadow-lg
-                                    ${formData?.traveler == item.people && 'shadow-lg border-black'}
-                                    `}>
+                                    ${formData?.traveler == item.people && 'shadow-lg border-black'}`}
+                                >
                                     <h2 className='text-4xl'>{item.icon}</h2>
                                     <h2 className='font-bold text-lg'>{item.title}</h2>
                                     <h2 className='text-sm text-gray-500'>{item.desc}</h2>
@@ -167,7 +168,8 @@ function CreateTrip() {
                 <div className='mt-10 flex justify-end'>
                     <Button
                         disabled={loading}
-                        onClick={OnGenerateTrip}>
+                        onClick={OnGenerateTrip}
+                    >
                         {loading ?
                             <AiOutlineLoading3Quarters className='h-7 w-7 animate-spin' /> : 'Generate Trip'
                         }
@@ -186,7 +188,8 @@ function CreateTrip() {
                     </DialogHeader>
                     <Button
                         onClick={login}
-                        className='w-full mt-5 flex gap-4 items-center outline-none border-none focus:outline-none'>
+                        className='w-full mt-5 flex gap-4 items-center outline-none border-none focus:outline-none'
+                    >
                         <FcGoogle className='h-7 w-7' />
                         Sign In with Google
                     </Button>
