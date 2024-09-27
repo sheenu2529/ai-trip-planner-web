@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { GetPlaceDetails } from '@/service/GlobalApi.jsx';
 import { PHOTO_REF_URL } from '@/service/GlobalApi.jsx';
 
@@ -21,11 +22,7 @@ function HotelCardItem({hotel}) {
     }
 
     return (
-        <a 
-            href={'https://www.google.com/maps/search/?api=1&query=' + hotel?.hotel_name + "," +hotel?.hotel_address} 
-            target='_blank'
-            className='focus:outline-none focus:ring-0 active:bg-transparent'
-        >
+        <Link to={'https://www.google.com/maps/search/?api=1&query=' + hotel?.hotel_name + "," +hotel?.hotel_address} target='_blank'>
             <div className='hover:scale-105 transition-all cursor-pointer'>
                 <img src={photoUrl ? photoUrl : '/placeholder.jpg'} className='rounded-xl h-[160px] w-full object-cover' />
                 <div className='my-2 flex flex-col gap-2'>
@@ -35,7 +32,7 @@ function HotelCardItem({hotel}) {
                     <h2 className='text-sm'>⭐ {hotel?.rating}</h2>
                 </div>  
             </div>
-        </a>
+        </Link>
     )
 }
 
