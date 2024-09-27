@@ -52,7 +52,7 @@ function MyTrips() {
       </h2>
 
       {/* Trips List */}
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-3">
         {userTrips.length > 0 ? (
           userTrips.map((trip) => (
             <UserTripCardItem key={trip.id} trip={trip} onDelete={() => handleDelete(trip.id)} />
