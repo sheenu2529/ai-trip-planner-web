@@ -22,7 +22,7 @@ function HotelCardItem({hotel}) {
 
     return (
         <a 
-            href={'https://www.google.com/maps/search/?api=1&query=' + hotel?.hotel_name + "," + hotel?.hotel_address + "," + hotel?.geo_coordinates} 
+            href={'https://www.google.com/maps/search/?api=1&query=' + hotel?.hotel_name + "," +hotel?.hotel_address} 
             target='_blank'
             className='focus:outline-none focus:ring-0 active:bg-transparent'
         >
