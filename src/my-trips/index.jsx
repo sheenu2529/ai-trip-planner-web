@@ -16,7 +16,7 @@ function MyTrips() {
    * Fetches all user trips from Firestore.
    */
   const GetUserTrips = async () => {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(sessionStorage.getItem('user'));
     if (!user) {
       navigate('/');
       return;
