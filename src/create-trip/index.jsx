@@ -22,16 +22,24 @@ import { useNavigate } from 'react-router-dom';
 
 function CreateTrip() {
     const [place, setPlace] = useState();
-    const [formData, setFormData] = useState([]);
+    const [formData, setFormData] = useState({});
     const [openDialog, setOpenDialog] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [user, setUser] = useState(null);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const storedUser = sessionStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
+    }, []);
+
     const handleInputChange = (name, value) => {
-        setFormData({
-            ...formData,
+        setFormData(prevData => ({
+            ...prevData,
             [name]: value
-        });
+        }));
     };
 
     useEffect(() => {
@@ -53,7 +61,6 @@ function CreateTrip() {
             return;
         }
 
-        const user = JSON.parse(localStorage.getItem('user'));
         if (!user) {
             setOpenDialog(true);
             return;
@@ -74,7 +81,6 @@ function CreateTrip() {
 
     const SaveAiTrip = async (TripData) => {
         setLoading(true);
-        const user = JSON.parse(localStorage.getItem('user'));
         const docId = Date.now().toString();
 
         await setDoc(doc(db, "AITrips", docId), {
@@ -97,6 +103,7 @@ function CreateTrip() {
         }).then((resp) => {
             console.log(resp);
             sessionStorage.setItem('user', JSON.stringify(resp.data));
+            setUser(resp.data);
             setOpenDialog(false);
             OnGenerateTrip();
         });
