@@ -51,7 +51,7 @@ function PlaceCardItem({ place }) {
           <span>{place.travelTime}</span>
         </div>
         <div className="flex items-center mt-2">
-          <DollarSign size={16} className="mr-1" />
+          <DollarSign size={16} className="mr-1 text-green-600" />
           <span>{place.ticketPricing}</span>
         </div>
       </div>

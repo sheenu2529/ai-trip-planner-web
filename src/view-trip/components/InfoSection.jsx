@@ -65,25 +65,25 @@ function InfoSection({ trip }) {
 
             {isModalOpen && (
                 <Modal onClose={closeSharePopup}>
-                    <div className='p-5'>
+                    <div className='p-5 h-[180px]'>
                         <h3 className='text-xl font-bold mb-3'>Share Trip</h3>
-                        <div className='mb-3 flex flex-col sm:flex-row items-start sm:items-center'>
+                        <div className='mb-3 flex flex-col sm:flex-row items-start sm:items-center mt-5'>
                             <span className='mr-2 mb-2 sm:mb-0 whitespace-nowrap'>Link:</span>
-                            <div className='flex-1 w-full relative pr-10'>
-                                <div className='w-full h-8 border-2 border-gray-200 flex items-center pr-10 overflow-hidden'>
-                                    <span className='w-full px-2 whitespace-nowrap overflow-hidden text-ellipsis'>
+                            <div className='w-full flex items-center'>
+                                <div className='w-full h-8 border-2 border-gray-200 flex items-center overflow-hidden'>
+                                    <span className='text-gray-600 w-full px-2 whitespace-nowrap overflow-hidden text-ellipsis'>
                                         {tripLink}
                                     </span>
                                 </div>
                                 <FaRegCopy 
-                                size={24} 
-                                className='pr-2 absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-600 hover:text-gray-900'
-                                onClick={copyToClipboard}
-                                title="Copy to clipboard"
+                                    size={24} 
+                                    className='ml-2 mr-8 cursor-pointer text-gray-600 hover:text-gray-900'
+                                    onClick={copyToClipboard}
+                                    title="Copy to clipboard"
                                 />
                             </div>
                         </div>
-                        <div className='flex gap-4 mt-10'>
+                        <div className='flex flex-wrap gap-4 mt-8'>
                             <a href={`https://api.whatsapp.com/send?text=${tripLink}`} target='_blank' rel='noopener noreferrer'>
                                 <IoLogoWhatsapp size={28} className='text-black hover:text-green-600' />
                             </a>
