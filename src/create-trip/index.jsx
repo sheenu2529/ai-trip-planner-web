@@ -96,7 +96,7 @@ function CreateTrip() {
             }
         }).then((resp) => {
             console.log(resp);
-            localStorage.setItem('user', JSON.stringify(resp.data));
+            sessionStorage.setItem('user', JSON.stringify(resp.data));
             setOpenDialog(false);
             OnGenerateTrip();
         });
