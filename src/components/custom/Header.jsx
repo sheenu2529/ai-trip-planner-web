@@ -54,12 +54,12 @@ function Header() {
                 {user ? (
                     <div className='flex items-center gap-3'>
                     <a
-                        className='text-[#3130FC] border-2 border-transparent lg:hover:border-[#3130FC] lg:hover:text-[#3130FC] px-2 py-1 rounded-lg text-md'
+                        className='text-[#3130FC] lg:hover:text-red-600 px-2 py-1 rounded-lg text-md'
                         href="/create-trip">
                         Create Trip
                     </a>
                     <a
-                        className='text-[#3130FC] border-2 border-transparent lg:hover:border-[#3130FC] lg:hover:text-[#3130FC] px-2 py-1 rounded-lg text-md'
+                        className='text-[#3130FC] lg:hover:text-red-600 px-2 py-1 rounded-lg text-md'
                         href="/my-trips">
                         My Trips
                     </a>
