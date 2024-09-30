@@ -1,11 +1,10 @@
-import { Button } from '@/components/ui/button';
-import { GetPlaceDetails } from '@/service/GlobalApi.jsx';
-import { PHOTO_REF_URL } from '@/service/GlobalApi.jsx';
 import React, { useEffect, useState } from 'react';
-import { IoIosSend, IoIosClipboard } from "react-icons/io";
+import { Button } from '@/components/ui/button';
+import { GetPlaceDetails, PHOTO_REF_URL } from '@/service/GlobalApi.jsx';
+import { IoIosSend } from "react-icons/io";
 import { FaRegCopy } from "react-icons/fa";
 import { IoLogoWhatsapp, IoLogoInstagram, IoLogoFacebook, IoLogoTwitter, IoLogoLinkedin, IoIosMail } from "react-icons/io";
-import Modal from '../components/Modal.jsx'; 
+import Modal from '../components/Modal.jsx';
 
 function InfoSection({ trip }) {
     const [photoUrl, setPhotoUrl] = useState();
@@ -64,54 +63,44 @@ function InfoSection({ trip }) {
                 </div>
             </div>
 
-            {/* Modal Popup */}
             {isModalOpen && (
                 <Modal onClose={closeSharePopup}>
                     <div className='p-5'>
                         <h3 className='text-xl font-bold mb-3'>Share Trip</h3>
-                        <p className='mb-3 flex items-center'>
-                            Link: <span className='ml-2 text-gray-400 w-full h-8 border-2 border-gray-200 flex items-center justify-center'>{tripLink}</span>
-                            <FaRegCopy  
-                                className='ml-3 cursor-pointer text-gray-600 hover:text-gray-900 ' 
-                                size={20} 
-                                onClick={copyToClipboard} 
+                        <div className='mb-3 flex flex-col sm:flex-row items-start sm:items-center'>
+                            <span className='mr-2 mb-2 sm:mb-0 whitespace-nowrap'>Link:</span>
+                            <div className='flex-1 w-full relative pr-10'>
+                                <div className='w-full h-8 border-2 border-gray-200 flex items-center pr-10 overflow-hidden'>
+                                    <span className='w-full px-2 whitespace-nowrap overflow-hidden text-ellipsis'>
+                                        {tripLink}
+                                    </span>
+                                </div>
+                                <FaRegCopy 
+                                size={24} 
+                                className='pr-2 absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-600 hover:text-gray-900'
+                                onClick={copyToClipboard}
                                 title="Copy to clipboard"
-                            />
-                        </p>
+                                />
+                            </div>
+                        </div>
                         <div className='flex gap-4 mt-10'>
                             <a href={`https://api.whatsapp.com/send?text=${tripLink}`} target='_blank' rel='noopener noreferrer'>
-                                <IoLogoWhatsapp 
-                                size={28}
-                                className='text-black hover:text-green-600' 
-                                />
+                                <IoLogoWhatsapp size={28} className='text-black hover:text-green-600' />
                             </a>
                             <a href={`https://www.instagram.com/?url=${tripLink}`} target='_blank' rel='noopener noreferrer'>
-                                <IoLogoInstagram 
-                                size={28} 
-                                className='text-black hover:text-red-600'    
-                                />
+                                <IoLogoInstagram size={28} className='text-black hover:text-red-600' />
                             </a>
                             <a href={`https://www.facebook.com/sharer/sharer.php?u=${tripLink}`} target='_blank' rel='noopener noreferrer'>
-                                <IoLogoFacebook 
-                                size={28}
-                                className='text-black hover:text-blue-600' 
-                                />
+                                <IoLogoFacebook size={28} className='text-black hover:text-blue-600' />
                             </a>
                             <a href={`https://twitter.com/intent/tweet?url=${tripLink}`} target='_blank' rel='noopener noreferrer'>
-                                <IoLogoTwitter size={28}
-                                className='text-black hover:text-blue-400'
-                                />
+                                <IoLogoTwitter size={28} className='text-black hover:text-blue-400' />
                             </a>
                             <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${tripLink}`} target='_blank' rel='noopener noreferrer'>
-                                <IoLogoLinkedin size={28}
-                                className='text-black hover:text-blue-700'
-                                />
+                                <IoLogoLinkedin size={28} className='text-black hover:text-blue-700' />
                             </a>
                             <a href={`mailto:?subject=Check out this trip!&body=${tripLink}`} target='_blank' rel='noopener noreferrer'>
-                                <IoIosMail
-                                size={28}
-                                className='text-black hover:text-red-500'
-                                />
+                                <IoIosMail size={28} className='text-black hover:text-red-500' />
                             </a>
                         </div>
                     </div>

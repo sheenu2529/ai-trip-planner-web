@@ -40,7 +40,7 @@ function HotelCardItem({ hotel }) {
             <span className="text-gray-500 text-sm sm:text-base">No image available</span>
           </div>
         )}
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300 flex items-center justify-center">
+        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300 flex items-center justify-center">
           <span className="text-white text-sm sm:text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             View on Google Maps
           </span>
@@ -50,16 +50,16 @@ function HotelCardItem({ hotel }) {
         <h2 className="text-lg sm:text-xl font-bold mb-2 text-gray-800 truncate">{hotel?.hotelName}</h2>
         <div className="space-y-1 sm:space-y-2">
           <p className="flex items-center text-gray-600 text-sm sm:text-base">
-            <MapPin className="w-4 h-4 mr-2 flex-shrink-0" />
+            <MapPin className="w-4 h-4 mr-2 flex-shrink-0 text-red-600" />
             <span className="truncate">{hotel?.hotelAddress}</span>
           </p>
           <p className="flex items-center text-gray-600 text-sm sm:text-base">
-            <DollarSign className="w-4 h-4 mr-2 flex-shrink-0" />
+            <DollarSign className="w-4 h-4 mr-2 flex-shrink-0 text-green-600" />
             <span>{hotel?.price}</span>
           </p>
           <p className="flex items-center text-gray-600 text-sm sm:text-base">
-            <Star className="w-4 h-4 mr-2 flex-shrink-0" />
-            <span>{hotel?.rating}</span>
+            <Star className="w-4 h-4 mr-2 flex-shrink-0 text-yellow-600" />
+            <span>{hotel?.rating} stars</span>
           </p>
         </div>
       </CardContent>
@@ -71,7 +71,7 @@ function HotelCardItem({ hotel }) {
           className="w-full flex justify-start"
         >
           <Button className="w-[100px] bg-black hover:bg-white hover:border-2 hover:border-black hover:text-black text-white font-bold py-2 px-4 rounded">
-            Find Hotels
+            Book Now
           </Button>
         </a>
       </CardFooter>
