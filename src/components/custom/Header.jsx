@@ -18,11 +18,15 @@ import { FcGoogle } from "react-icons/fc";
 import axios from 'axios';
 
 function Header() {
-    const user = JSON.parse(sessionStorage.getItem('user'));
+    const [user, setUser] = useState(null);
     const [openDialog, setOpenDialog] = useState(false);
 
     useEffect(() => {
-        console.log(user);
+        // Check sessionStorage for user data on component mount
+        const storedUser = sessionStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
     }, []);
 
     const login = useGoogleLogin({
@@ -38,12 +42,21 @@ function Header() {
             },
         }).then((resp) => {
             console.log(resp);
+            // Store user data in sessionStorage instead of localStorage
             sessionStorage.setItem('user', JSON.stringify(resp.data));
+            setUser(resp.data);
             setOpenDialog(false);
         });
     };
 
-    const userPicture = user?.picture || 'user.png';
+    const handleLogout = () => {
+        googleLogout();
+        sessionStorage.clear();
+        setUser(null);
+        window.location.href = '/';
+    };
+
+    const userPicture = user?.picture || '/user.png';
 
     return (
         <div className='fixed top-0 w-full p-3 shadow-sm flex justify-between items-center px-5 bg-white z-50' style={{ height: '60px' }}>
@@ -53,16 +66,16 @@ function Header() {
             <div className="flex items-center gap-5">
                 {user ? (
                     <div className='flex items-center gap-3'>
-                    <a
-                        className='text-[#3130FC] border-2 border-transparent lg:hover:border-[#3130FC] lg:hover:text-[#3130FC] px-2 py-1 rounded-lg text-md'
-                        href="/create-trip">
-                        Create Trip
-                    </a>
-                    <a
-                        className='text-[#3130FC] border-2 border-transparent lg:hover:border-[#3130FC] lg:hover:text-[#3130FC] px-2 py-1 rounded-lg text-md'
-                        href="/my-trips">
-                        My Trips
-                    </a>
+                        <a
+                            className='text-[#3130FC] border-2 border-transparent lg:hover:border-[#3130FC] lg:hover:text-[#3130FC] px-2 py-1 rounded-lg text-md'
+                            href="/create-trip">
+                            Create Trip
+                        </a>
+                        <a
+                            className='text-[#3130FC] border-2 border-transparent lg:hover:border-[#3130FC] lg:hover:text-[#3130FC] px-2 py-1 rounded-lg text-md'
+                            href="/my-trips">
+                            My Trips
+                        </a>
                         <Popover>
                             <PopoverTrigger className='border-none bg-white focus:outline-none rounded-lg'>
                                 <img
@@ -73,11 +86,7 @@ function Header() {
                                 />
                             </PopoverTrigger>
                             <PopoverContent className='flex items-center justify-center p-4'>
-                                <h2 className='cursor-pointer text-red-600' onClick={() => {
-                                    googleLogout();
-                                    localStorage.clear();
-                                    window.location.href = '/';
-                                }}>Logout</h2>
+                                <h2 className='cursor-pointer text-red-600' onClick={handleLogout}>Logout</h2>
                             </PopoverContent>
                         </Popover>
                     </div>
