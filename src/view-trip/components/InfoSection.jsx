@@ -1,11 +1,16 @@
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button';
 import { GetPlaceDetails } from '@/service/GlobalApi.jsx';
 import { PHOTO_REF_URL } from '@/service/GlobalApi.jsx';
-import React, { useEffect, useState } from 'react'
-import { IoIosSend } from "react-icons/io";
+import React, { useEffect, useState } from 'react';
+import { IoIosSend, IoIosClipboard } from "react-icons/io";
+import { FaRegCopy } from "react-icons/fa";
+import { IoLogoWhatsapp, IoLogoInstagram, IoLogoFacebook, IoLogoTwitter, IoLogoLinkedin, IoIosMail } from "react-icons/io";
+import Modal from '../components/Modal.jsx'; 
 
 function InfoSection({ trip }) {
     const [photoUrl, setPhotoUrl] = useState();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [tripLink, setTripLink] = useState('');
 
     useEffect(() => {
         trip && GetPlacePhoto();
@@ -14,20 +19,27 @@ function InfoSection({ trip }) {
     const GetPlacePhoto = async () => {
         const data = {
             textQuery: trip?.userSelection?.location?.label
-        }
+        };
         const result = await GetPlaceDetails(data).then(resp => {
-            console.log(resp.data.places[0].photos[3].name);
-
             const photoUrl = PHOTO_REF_URL.replace('{NAME}', resp.data.places[0].photos[3].name);
             setPhotoUrl(photoUrl);
         });
-    }
+    };
 
-    const shareTrip = () => {
-        const tripLink = `https://ai-trip-planner-web-rho.vercel.app/view-trip/${trip.id}`;
-        const whatsappUrl = `https://api.whatsapp.com/send?text=${tripLink}`;
-        window.open(whatsappUrl, '_blank');
-    }
+    const openSharePopup = () => {
+        const link = `https://ai-trip-planner-web-rho.vercel.app/view-trip/${trip.id}`;
+        setTripLink(link);
+        setIsModalOpen(true);
+    };
+
+    const closeSharePopup = () => {
+        setIsModalOpen(false);
+    };
+
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(tripLink);
+        alert('Link copied to clipboard!');
+    };
 
     return (
         <div className='mt-10'>
@@ -48,11 +60,65 @@ function InfoSection({ trip }) {
                     </div>
                 </div>
                 <div className='mt-10'>
-                    <Button onClick={shareTrip}><IoIosSend /></Button>
+                    <Button onClick={openSharePopup}><IoIosSend /></Button>
                 </div>
             </div>
+
+            {/* Modal Popup */}
+            {isModalOpen && (
+                <Modal onClose={closeSharePopup}>
+                    <div className='p-5'>
+                        <h3 className='text-xl font-bold mb-3'>Share Trip</h3>
+                        <p className='mb-3 flex items-center'>
+                            Link: <span className='ml-2 text-gray-400 w-full h-8 border-2 border-gray-200 flex items-center justify-center'>{tripLink}</span>
+                            <FaRegCopy  
+                                className='ml-3 cursor-pointer text-gray-600 hover:text-gray-900 ' 
+                                size={20} 
+                                onClick={copyToClipboard} 
+                                title="Copy to clipboard"
+                            />
+                        </p>
+                        <div className='flex gap-4 mt-10'>
+                            <a href={`https://api.whatsapp.com/send?text=${tripLink}`} target='_blank' rel='noopener noreferrer'>
+                                <IoLogoWhatsapp 
+                                size={28}
+                                className='text-black hover:text-green-600' 
+                                />
+                            </a>
+                            <a href={`https://www.instagram.com/?url=${tripLink}`} target='_blank' rel='noopener noreferrer'>
+                                <IoLogoInstagram 
+                                size={28} 
+                                className='text-black hover:text-red-600'    
+                                />
+                            </a>
+                            <a href={`https://www.facebook.com/sharer/sharer.php?u=${tripLink}`} target='_blank' rel='noopener noreferrer'>
+                                <IoLogoFacebook 
+                                size={28}
+                                className='text-black hover:text-blue-600' 
+                                />
+                            </a>
+                            <a href={`https://twitter.com/intent/tweet?url=${tripLink}`} target='_blank' rel='noopener noreferrer'>
+                                <IoLogoTwitter size={28}
+                                className='text-black hover:text-blue-400'
+                                />
+                            </a>
+                            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${tripLink}`} target='_blank' rel='noopener noreferrer'>
+                                <IoLogoLinkedin size={28}
+                                className='text-black hover:text-blue-700'
+                                />
+                            </a>
+                            <a href={`mailto:?subject=Check out this trip!&body=${tripLink}`} target='_blank' rel='noopener noreferrer'>
+                                <IoIosMail
+                                size={28}
+                                className='text-black hover:text-red-500'
+                                />
+                            </a>
+                        </div>
+                    </div>
+                </Modal>
+            )}
         </div>
-    )
+    );
 }
 
 export default InfoSection;
