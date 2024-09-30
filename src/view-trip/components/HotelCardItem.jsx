@@ -70,7 +70,7 @@ function HotelCardItem({ hotel }) {
           rel="noopener noreferrer"
           className="w-full flex justify-start"
         >
-          <Button className="w-[100px] bg-black hover:bg-white hover:border-2 hover:border-black hover:text-black text-white font-bold py-2 px-4 rounded">
+          <Button className="w-[100px] bg-black hover:bg-white hover:border-2 hover:border-black hover:text-black text-white font-bold py-2 px-4 rounded focus:outline-none">
             Book Now
           </Button>
         </a>

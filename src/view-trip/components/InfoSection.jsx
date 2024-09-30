@@ -84,22 +84,22 @@ function InfoSection({ trip }) {
                             </div>
                         </div>
                         <div className='flex flex-wrap gap-4 mt-8'>
-                            <a href={`https://api.whatsapp.com/send?text=${tripLink}`} target='_blank' rel='noopener noreferrer'>
+                            <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`Check out this trip: ${tripLink}`)}`} target='_blank' rel='noopener noreferrer'>
                                 <IoLogoWhatsapp size={28} className='text-black hover:text-green-600' />
                             </a>
-                            <a href={`https://www.instagram.com/?url=${tripLink}`} target='_blank' rel='noopener noreferrer'>
+                            <a href={`https://www.instagram.com/direct/new/?text=${encodeURIComponent(`Check out this trip: ${tripLink}`)}`} target='_blank' rel='noopener noreferrer'>
                                 <IoLogoInstagram size={28} className='text-black hover:text-red-600' />
                             </a>
-                            <a href={`https://www.facebook.com/sharer/sharer.php?u=${tripLink}`} target='_blank' rel='noopener noreferrer'>
+                            <a href={`https://www.facebook.com/dialog/send?link=${encodeURIComponent(tripLink)}&app_id=YOUR_FACEBOOK_APP_ID`} target='_blank' rel='noopener noreferrer'>
                                 <IoLogoFacebook size={28} className='text-black hover:text-blue-600' />
                             </a>
-                            <a href={`https://twitter.com/intent/tweet?url=${tripLink}`} target='_blank' rel='noopener noreferrer'>
+                            <a href={`https://twitter.com/messages/compose?text=${encodeURIComponent(`Check out this trip: ${tripLink}`)}`} target='_blank' rel='noopener noreferrer'>
                                 <IoLogoTwitter size={28} className='text-black hover:text-blue-400' />
                             </a>
-                            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${tripLink}`} target='_blank' rel='noopener noreferrer'>
+                            <a href={`https://www.linkedin.com/messaging/compose/?body=${encodeURIComponent(`Check out this trip: ${tripLink}`)}`} target='_blank' rel='noopener noreferrer'>
                                 <IoLogoLinkedin size={28} className='text-black hover:text-blue-700' />
                             </a>
-                            <a href={`mailto:?subject=Check out this trip!&body=${tripLink}`} target='_blank' rel='noopener noreferrer'>
+                            <a href={`mailto:?subject=Check out this trip!&body=${encodeURIComponent(`I found this interesting trip: ${tripLink}`)}`} target='_blank' rel='noopener noreferrer'>
                                 <IoIosMail size={28} className='text-black hover:text-red-500' />
                             </a>
                         </div>
