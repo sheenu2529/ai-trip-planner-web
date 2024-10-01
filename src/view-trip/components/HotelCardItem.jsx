@@ -6,7 +6,7 @@ import { MapPin, DollarSign, Star } from 'lucide-react';
 
 function HotelCardItem({ hotel }) {
   const [photoUrl, setPhotoUrl] = useState('');
-
+  const defaultImageUrl = '../placeholder.jpg';
   useEffect(() => {
     if (hotel) {
       getPlacePhoto();
@@ -35,17 +35,11 @@ function HotelCardItem({ hotel }) {
           rel="noopener noreferrer"
           className="absolute inset-0"
         >
-          {photoUrl ? (
-            <img
-              src={photoUrl}
-              alt={`${hotel?.hotelName},${hotel?.hotelAddress}`}
-              className="absolute h-full w-full object-cover sm:transition-transform sm:duration-300 sm:hover:scale-110"
-            />
-          ) : (
-            <div className="absolute h-full w-full bg-gray-200 flex items-center justify-center">
-              <span className="text-gray-500 text-sm sm:text-base">No image available</span>
-            </div>
-          )}
+          <img
+            src={photoUrl || defaultImageUrl} // Use default image if photoUrl is not available
+            alt={`${hotel?.hotelName},${hotel?.hotelAddress}`}
+            className="absolute h-full w-full object-cover sm:transition-transform sm:duration-300 sm:hover:scale-110"
+          />
         </a>
       </div>
       <CardContent className="p-3 sm:p-4">
@@ -73,7 +67,7 @@ function HotelCardItem({ hotel }) {
           className="w-full flex justify-start"
         >
           <Button className="w-[100px] bg-black text-white font-bold py-2 px-4 rounded focus:outline-none sm:hover:bg-white sm:hover:border-2 sm:hover:border-black sm:hover:text-black">
-            Book Now
+            Find Hotels
           </Button>
         </a>
       </CardFooter>
