@@ -28,7 +28,7 @@ function HotelCardItem({ hotel }) {
 
   return (
     <Card className="w-full max-w-sm mx-auto overflow-hidden shadow-lg">
-      <div className="block relative w-full h-36 sm:h-48 overflow-hidden group">
+      <div className="block relative w-full h-36 sm:h-48 overflow-hidden">
         <a
           href={googleMapsUrl}
           target="_blank"
@@ -39,18 +39,13 @@ function HotelCardItem({ hotel }) {
             <img
               src={photoUrl}
               alt={`${hotel?.hotelName},${hotel?.hotelAddress}`}
-              className="absolute h-full w-full object-cover sm:transition-transform sm:duration-300 sm:group-hover:scale-110"
+              className="absolute h-full w-full object-cover sm:transition-transform sm:duration-300 sm:hover:scale-110"
             />
           ) : (
             <div className="absolute h-full w-full bg-gray-200 flex items-center justify-center">
               <span className="text-gray-500 text-sm sm:text-base">No image available</span>
             </div>
           )}
-          <div className="absolute inset-0 bg-black bg-opacity-30 sm:bg-opacity-0 sm:group-hover:bg-opacity-30 sm:transition-opacity sm:duration-300 flex items-center justify-center">
-            <span className="text-white text-sm sm:text-lg font-semibold sm:opacity-0 sm:group-hover:opacity-100 sm:transition-opacity sm:duration-300">
-              View on Google Maps
-            </span>
-          </div>
         </a>
       </div>
       <CardContent className="p-3 sm:p-4">
