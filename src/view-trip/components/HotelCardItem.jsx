@@ -23,27 +23,32 @@ function HotelCardItem({ hotel }) {
     }
   };
 
-  const bookingUrl = `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(hotel?.hotelName)}`;
-  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(hotel?.hotelName)}`;
+  const bookingUrl = `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(hotel?.hotelName+","+hotel?.hotelAddress)}`;
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(hotel?.hotelName+","+hotel?.hotelAddress)}`;
 
   return (
-    <Card className="w-full max-w-sm mx-auto overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
-      <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="block relative w-full h-36 sm:h-48 overflow-hidden group">
+    <Card className="w-full max-w-sm mx-auto overflow-hidden shadow-lg">
+      <a 
+        href={googleMapsUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="block relative w-full h-36 sm:h-48 overflow-hidden group"
+        >
         {photoUrl ? (
-          <img 
+            <img 
             src={photoUrl} 
-            alt={`${hotel?.hotelName}`} 
-            className="absolute h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-          />
+            alt={`${hotel?.hotelName},${hotel?.hotelAddress}`} 
+            className="absolute h-full w-full object-cover sm:transition-transform sm:duration-300 sm:group-hover:scale-110"
+            />
         ) : (
-          <div className="absolute h-full w-full bg-gray-200 flex items-center justify-center">
+            <div className="absolute h-full w-full bg-gray-200 flex items-center justify-center">
             <span className="text-gray-500 text-sm sm:text-base">No image available</span>
-          </div>
+            </div>
         )}
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300 flex items-center justify-center">
-          <span className="text-white text-sm sm:text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 bg-black bg-opacity-30 sm:bg-opacity-0 sm:group-hover:bg-opacity-30 sm:transition-opacity sm:duration-300 flex items-center justify-center">
+            <span className="text-white text-sm sm:text-lg font-semibold sm:opacity-0 sm:group-hover:opacity-100 sm:transition-opacity sm:duration-300">
             View on Google Maps
-          </span>
+            </span>
         </div>
       </a>
       <CardContent className="p-3 sm:p-4">
@@ -70,7 +75,7 @@ function HotelCardItem({ hotel }) {
           rel="noopener noreferrer"
           className="w-full flex justify-start"
         >
-          <Button className="w-[100px] bg-black hover:bg-white hover:border-2 hover:border-black hover:text-black text-white font-bold py-2 px-4 rounded focus:outline-none">
+          <Button className="w-[100px] bg-black text-white font-bold py-2 px-4 rounded focus:outline-none sm:hover:bg-white sm:hover:border-2 sm:hover:border-black sm:hover:text-black">
             Book Now
           </Button>
         </a>

@@ -36,7 +36,7 @@ function PlaceCardItem({ place }) {
   return (
     <div 
       onClick={handleClick}
-      className="border rounded-xl p-3 mt-2 flex gap-5 hover:scale-105 transition-all hover:shadow-md cursor-pointer"
+      className="border rounded-xl p-3 mt-2 flex gap-5 sm:hover:scale-105 sm:transition-all sm:hover:shadow-md cursor-pointer"
     >
       <img
         src={photoUrl || '/placeholder.jpg'}

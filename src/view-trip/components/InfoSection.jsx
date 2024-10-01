@@ -77,7 +77,7 @@ function InfoSection({ trip }) {
                                 </div>
                                 <FaRegCopy 
                                     size={24} 
-                                    className='ml-2 mr-8 cursor-pointer text-gray-600 hover:text-gray-900'
+                                    className='ml-2 mr-8 cursor-pointer text-gray-600 sm:hover:text-gray-900'
                                     onClick={copyToClipboard}
                                     title="Copy to clipboard"
                                 />
@@ -85,22 +85,22 @@ function InfoSection({ trip }) {
                         </div>
                         <div className='flex flex-wrap gap-4 mt-8'>
                             <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`Check out this trip: ${tripLink}`)}`} target='_blank' rel='noopener noreferrer'>
-                                <IoLogoWhatsapp size={28} className='text-black hover:text-green-600' />
+                                <IoLogoWhatsapp size={28} className='text-black sm:hover:text-green-600' />
                             </a>
                             <a href={`https://www.instagram.com/direct/new/?text=${encodeURIComponent(`Check out this trip: ${tripLink}`)}`} target='_blank' rel='noopener noreferrer'>
-                                <IoLogoInstagram size={28} className='text-black hover:text-red-600' />
+                                <IoLogoInstagram size={28} className='text-black sm:hover:text-red-600' />
                             </a>
                             <a href={`https://www.facebook.com/dialog/send?link=${encodeURIComponent(tripLink)}&app_id=YOUR_FACEBOOK_APP_ID`} target='_blank' rel='noopener noreferrer'>
-                                <IoLogoFacebook size={28} className='text-black hover:text-blue-600' />
+                                <IoLogoFacebook size={28} className='text-black sm:hover:text-blue-600' />
                             </a>
                             <a href={`https://twitter.com/messages/compose?text=${encodeURIComponent(`Check out this trip: ${tripLink}`)}`} target='_blank' rel='noopener noreferrer'>
-                                <IoLogoTwitter size={28} className='text-black hover:text-blue-400' />
+                                <IoLogoTwitter size={28} className='text-black sm:hover:text-blue-400' />
                             </a>
                             <a href={`https://www.linkedin.com/messaging/compose/?body=${encodeURIComponent(`Check out this trip: ${tripLink}`)}`} target='_blank' rel='noopener noreferrer'>
-                                <IoLogoLinkedin size={28} className='text-black hover:text-blue-700' />
+                                <IoLogoLinkedin size={28} className='text-black sm:hover:text-blue-700' />
                             </a>
                             <a href={`mailto:?subject=Check out this trip!&body=${encodeURIComponent(`I found this interesting trip: ${tripLink}`)}`} target='_blank' rel='noopener noreferrer'>
-                                <IoIosMail size={28} className='text-black hover:text-red-500' />
+                                <IoIosMail size={28} className='text-black sm:hover:text-red-500' />
                             </a>
                         </div>
                     </div>
