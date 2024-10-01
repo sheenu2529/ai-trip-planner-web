@@ -23,10 +23,10 @@ function Header() {
 
     useEffect(() => {
         console.log(user);
-    }, []);
+    }, [user]);
 
     const login = useGoogleLogin({
-        onSuccess: (codeResp) => GetUserProfile(codeResp),
+        onSuccess: (tokenInfo) => GetUserProfile(tokenInfo),
         onError: (error) => console.log(error),
     });
 
@@ -39,7 +39,9 @@ function Header() {
         }).then((resp) => {
             console.log(resp);
             sessionStorage.setItem('user', JSON.stringify(resp.data));
-            setOpenDialog(false);
+            setOpenDialog(false);  // Close the dialog after successful login
+        }).catch((error) => {
+            console.error("Error fetching user profile: ", error);
         });
     };
 
@@ -53,16 +55,16 @@ function Header() {
             <div className="flex items-center gap-5">
                 {user ? (
                     <div className='flex items-center gap-3'>
-                    <a
-                        className='text-[#3130FC] lg:hover:text-red-600 px-2 py-1 rounded-lg text-md'
-                        href="/create-trip">
-                        Create Trip
-                    </a>
-                    <a
-                        className='text-[#3130FC] lg:hover:text-red-600 px-2 py-1 rounded-lg text-md'
-                        href="/my-trips">
-                        My Trips
-                    </a>
+                        <a
+                            className='text-[#3130FC] lg:hover:text-red-600 px-2 py-1 rounded-lg text-md'
+                            href="/create-trip">
+                            Create Trip
+                        </a>
+                        <a
+                            className='text-[#3130FC] lg:hover:text-red-600 px-2 py-1 rounded-lg text-md'
+                            href="/my-trips">
+                            My Trips
+                        </a>
                         <Popover>
                             <PopoverTrigger className='border-none bg-white focus:outline-none rounded-lg'>
                                 <img
